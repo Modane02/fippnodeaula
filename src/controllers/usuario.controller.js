@@ -25,6 +25,3 @@ export default class UsuarioController{
 
     }
 }
-
-git config --global user.email "danielnegri2002@gmail.com"
-git config --global user.name "Modane02"
