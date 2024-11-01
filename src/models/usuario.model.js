@@ -55,6 +55,38 @@ export default class UsuarioModel {
         return resultado;
     }
 
-    
+    async listar(){
+        let sql = "SELECT * FROM tb_usuario";
+
+        let resultado = await conexao.ExecutaComando(sql);
+        return resultado;
+    }
+
+    async buscar(){
+        let sql = "SELECT * FROM tb_usuario WHERE usu_id = ?";
+        let valor = [this.#id];
+
+        let resultado = await conexao.ExecutaComando(sql, valor);
+
+        return resultado;
+    }
+
+    async deletar(){
+        let sql = "DELETE FROM tb_usuario WHERE usu_id = ?";
+        let valor = [this.#id];
+
+        let resultado = await conexao.ExecutaComandoNonQuery(sql, valor);
+
+        return resultado;
+    }
+
+    async update(){
+        let sql = "UPDATE  tb_usuario SET usu_nome = ?,  usu_email = ?, usu_idade = ? WHERE usu_id = ?";
+        let valores = [this.#nome, this.#email, this.#idade, this.#id];
+
+        let resultado = await conexao.ExecutaComandoNonQuery(sql, valores);
+
+        return resultado;
+    }
 
 }
